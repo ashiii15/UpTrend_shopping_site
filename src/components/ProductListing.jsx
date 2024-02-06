@@ -36,7 +36,7 @@ function ProductListing() {
   return (
     <>
       <Categories filterItem={filterItem} />
-      {loading ? <h1>Loading...</h1> : error ? <h1>{error}</h1> :<HomePage data={filterData} />}
+      {loading ? <h1 className="mt-5">Loading...</h1> : error ? <h1>{error}</h1> :<HomePage data={filterData} />}
     </>
   );
 }
