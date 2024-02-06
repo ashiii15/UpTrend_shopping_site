@@ -6,15 +6,19 @@ import Categories from "./Categories";
 function ProductListing() {
   const [data, SetData] = useState([]);
   const [filterData, setFilterData] = useState([]);
-  console.log(filterData);
+  const [loading, SetLoading] = useState(true);
+  const [error, setError] = useState(null)
+  // console.log(filterData);
   const fetchProducts = async () => {
-    const productData = await axios
-      .get("https://fakestoreapi.com/products")
-      .catch((err) => {
-        console.log(err.code);
-      });
-    SetData(productData.data);
-    setFilterData(productData.data);
+    try {
+      const productData = await axios.get("https://fakestoreapi.com/products");
+      SetLoading(false);
+      SetData(productData.data);
+      setFilterData(productData.data);
+    } catch (err) {
+      SetLoading(false);
+      setError(`whoops! Something went wrong`)
+    }
   };
   useEffect(() => {
     fetchProducts();
@@ -32,7 +36,7 @@ function ProductListing() {
   return (
     <>
       <Categories filterItem={filterItem} />
-      <HomePage data={filterData} />
+      {loading ? <h1>Loading...</h1> : error ? <h1>{error}</h1> :<HomePage data={filterData} />}
     </>
   );
 }
