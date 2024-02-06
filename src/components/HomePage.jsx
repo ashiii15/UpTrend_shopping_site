@@ -1,23 +1,28 @@
 import React from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 
-function HomePage() {
+function HomePage({data}) {
+  console.log(data);
   return (
     <>
-      <Row className="mt-5 ms-5 mb-5 me-5">
-        <Col sm={12} md={6} lg={4} xl={3}>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
+      <Row className="mt-5 ms-5 mb-5 me-5 justify-content-center">
+        { data?.map((item)=>{
+          const {id,image,title,price,description} = item
+          return <Col key={id} sm={12} md={6} lg={4} xl={3}>
+          <Card  style={{ width: "18rem" }}>
+            <Card.Img variant="top" src={image} />
             <Card.Body>
-              <Card.Title>Card Title</Card.Title>
+              <Card.Title>{title}</Card.Title><span>{price}</span>
               <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                {description}
               </Card.Text>
               <Button variant="primary">Go somewhere</Button>
             </Card.Body>
           </Card>
         </Col>
+        })
+          
+        }
       </Row>
     </>
   );
