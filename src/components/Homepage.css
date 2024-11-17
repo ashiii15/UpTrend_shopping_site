@@ -1,0 +1,12 @@
+.custom-card {
+    transition: transform 0.3s ease;
+    cursor: pointer
+  }
+  
+  .custom-card:hover {
+    transform: scale(1.05);
+    z-index: 2;
+  }
+  .card-image:hover {
+    transform: scale(1.8);
+  }

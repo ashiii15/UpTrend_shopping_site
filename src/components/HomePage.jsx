@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./Homepage.css";
 import { Button, Card, Col, Row } from "react-bootstrap";
 function HomePage({ data }) {
   return (
@@ -8,8 +9,8 @@ function HomePage({ data }) {
           const { id, image, title, price, description } = item;
           return (
             <Col className="mb-4" key={id} sm={12} md={6} lg={4} xl={3}>
-              <Card style={{ width: "19rem", height: "40rem" }}>
-                <Card.Img variant="top" src={image} height={"300px"} />
+              <Card className="custom-card" style={{ width: "19rem", height: "40rem" }}>
+                <Card.Img variant="top" src={image} height={"300px"} className="card-image" />
                 <Card.Body>
                   <Card.Title>{title.slice(0, 100)}...</Card.Title>
                   <p className="fw-bolder">${price}</p>
